@@ -36,7 +36,18 @@
 								<div class="inner">
 
 									<h3 class="major">Introduction</h3>
-									<p>Need to talk about brief/aim</p>
+									<p>
+										This was the second piece of coursework for the final year of my degree.
+										The aim for the coursework was to use C++ and OpenGL to render a landscape
+										that changed over time. This was done using Newcastle University’s graphics framework,
+										NCLGL, which was built upon throughout the module.
+									</p>
+									<p>
+										For the coursework, I created a landscape that rose out of the water over time.
+										The landscape also featured several trees, lanterns,
+										a UFO and some models provided by the university.
+
+									</p>
 
 									<h3 class="major">Video</h3>
 									<div class="iframe-container">
@@ -46,19 +57,66 @@
 									</div>
 
 									<h3 class="major">Implementation</h3>
-									<p>The coursework was spilt up into two main parts.
-										Part A consisted of standard features and Part B consisted of advanced features.
-									</p>
-									<img src="Images/bg02.png" alt="" width="75%"/>
-									<br/>
 									<p>
-										The above screenshot demonstrates many of the standard features implemented in the coursework.
-										The scene consists of a landscape formed of a several textures, and is lit by several light sources,
-										each providing ambient, diffuse and specular components. The screenshot also shows the use of simple
-										shadow mapping, creating shadows from various meshes on the terrain, and uses environment mapping
-										to create a skybox around the scene.
+										The scene was controlled using a scene graph.
+										Each node of the tree could contain a mesh to render,
+										a transform relative to the node’s parent, and
+										a shader if the child node needed to be rendered differently.
 									</p>
-
+									<p>
+										The terrain was generated using an index buffer,
+										and then reading a heightmap file to raise the vertices to the correct height.
+										Depending on the vertex height, the terrain was textured using one of two textures
+										(grass texture for lower terrain, and rock for higher) and given one of two bump maps,
+										allowing extra detail without having to provide extra vertices.
+										When texturing the terrain, Triplanar Texturing was used to prevent textures
+										from stretching in steep areas of the terrain.
+										To create the rising effect, the heightmap shader was passed a factor between 0 and 1.
+										This determined how much the heightmap had risen at each vertex.
+										This was also used by an objects on the heightmap, so that their positions could be updated.
+									</p>
+									<img src="Images/CSC8502-2.png" alt="" width="75%"/>
+									<p>
+										The water was also created using an index buffer. However, rather than using a heightmap,
+										a rolling sine wave was used to create an illusion of waves.
+										Like the terrain, the water was given a texture and a bump map, however,
+										cube mapping was also used to give reflections of the distant mountains.
+										This is a similar technique to how the skybox was created, however,
+										different methods were used to calculate the direction vector used to sample the cube map.
+									</p>
+									<p>
+										Lighting was achieved using the Phong Lighting Model, providing calculations for ambient,
+										diffuse and specular lighting. The main light is a purely directional light, without an origin.
+										Each of the lanterns create a point light centred at their origin.
+										Lastly, the UFO circling the landscape produces a spotlight which will only light
+										terrain within a given angle. Shadow mapping was then used to form the shadows
+										of the objects onto the terrain. This is done dynamically, allowing the shadows to
+										update when objects move.
+									</p>
+									<img src="Images/CSC8502-3.png" alt="" width="75%"/>
+									<p>
+										Several post processing effects were then added.
+										This was done by renderering the scene to a texture bound to a framebuffer.
+										This could then sampled in post processing steps before being rendered
+										to the screen using a quad.
+									</p>
+										Post processing effects included:
+										<ul>
+											<li>A general gaussian blur using ping pong processing.</li>
+											<li>A modified version to create a depth of field effect by sampling the depth buffer.</li>
+											<li>2 versions of Sobel Edge Detection
+												(a traditional black and white version, and a coloured version).</li>
+											<li>A simple Gameboy filter by setting the pixel to one of 4 colours
+												based on the pixels ‘intensity’.</li>
+										</ul>
+									</p>
+									<p>
+										A split screen was also added, with each sub-screen allowing its own post processing effect.
+										This was done by rendering the scene twice (once from each camera’s perspective)
+										and applying them as textures to quads at one of two positions on the screen.
+									</p>
+									<img src="Images/CSC8502-5.png" alt="" width="75%"/>
+									<img src="Images/CSC8502-6.png" alt="" width="75%"/>
 								</div>
 							</div>
 
