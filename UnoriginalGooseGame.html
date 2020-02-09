@@ -57,11 +57,65 @@
 
 									<h3 class="major">Implementation</h3>
 
-									<img src="Images/CSC8503-1.png" alt="" width="75%"/>
+									<h4>Physics</h4>
+									<ul>
+										<li>Simple Newtonian physics was used in the game,
+											allowing objects to be moved by applying forces on them.
+											This can result in both linear and angular motion, by applying
+											Semi-Implicit Euler Integration.</li>
+									</ul>
+
 									<img src="Images/CSC8503-2.png" alt="" width="75%"/>
-									<img src="Images/CSC8503-3.png" alt="" width="75%"/>
+
+									<h4>Collision Detection</h4>
+									<ul>
+										<li>Objects in the game are represented by one of three collision volumes:
+											Sphere, AABB, or OBB. The physics system can detect collisions between
+											Sphere/Sphere, Sphere/AABB, AABB/AABB, or Sphere/OBB.</li>
+										<li>Each collision volume is given a Unity-style Collision Layer. These will
+											only collide with volumes on other specified layers, allowing some objects
+											to not collide with each other. These are used by the goose and island in the game,
+											only letting them pick up and score particular items.</li>
+										<li>The collision detection is also accelerated using a broad phase
+											in the form of Quad Trees, allowing the world to be split up and reducing
+											the number of collision pairs being tested.</li>
+									</ul>
+
+									<img src="Images/CSC8503-1.png" alt="" width="75%"/>
+
+									<h4>Collision Resolution</h4>
+									<ul>
+										<li>Collisions are then resolved using projection, adjusting the object positions
+											to return them to a valid state, followed by giving each of them an impulse,
+											adjusting their linear and angular velocity to account for the collision.</li>
+										<li>Finally, some collision volumes can be marked are Trigger Volumes.
+											These will detect collisions, but will skip the resolution phase,
+											allowing objects to detect certain collisions without responding to them.
+											This is used in the game by the water to create a bobbing effect,
+											and by the goose home, which surrounds the island and will score items placed inside.</li>
+									</ul>
+
 									<img src="Images/CSC8503-4.png" alt="" width="75%"/>
+
+									<h4>Artifical Intelligence</h4>
+									<ul>
+										<li>Finite State machines are used by enemies in the game, which will chase
+											the goose if it walks close by with an item.</li>
+										<li>A* pathfinding is then used when chasing the goose.</li>
+									</ul>
+
+
 									<img src="Images/CSC8503-5.png" alt="" width="75%"/>
+
+									<h4>Networking</h4>
+									<ul>
+										<li>The game also has a shared high-score table, which is stored
+											by a server machine. After a player’s game ends, their score
+											will be added to the table, and the table is then sent to the
+											player’s game to display.</li>
+									</ul>
+
+									<img src="Images/CSC8503-3.png" alt="" width="75%"/>
 
 									<h3 class="major">What I Learnt</h3>
 									<p>
