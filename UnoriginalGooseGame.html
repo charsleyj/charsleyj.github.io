@@ -76,7 +76,7 @@
 											only collide with volumes on other specified layers, allowing some objects
 											to not collide with each other. These are used by the goose and island in the game,
 											only letting them pick up and score particular items.</li>
-										<li>The collision detection is also accelerated using a broad phase
+										<li>The collision detection is accelerated using a broad phase
 											in the form of Quad Trees, allowing the world to be split up and reducing
 											the number of collision pairs being tested.</li>
 									</ul>
@@ -85,9 +85,10 @@
 
 									<h4>Collision Resolution</h4>
 									<ul>
-										<li>Collisions are then resolved using projection, adjusting the object positions
-											to return them to a valid state, followed by giving each of them an impulse,
-											adjusting their linear and angular velocity to account for the collision.</li>
+										<li>Collisions are resolved using projection, adjusting the object positions
+											to return them to a valid state.</li>
+										<li> Objects are then given an impulse, adjusting their linear and angular
+											velocity to account for the collision.</li>
 										<li>Finally, some collision volumes can be marked are Trigger Volumes.
 											These will detect collisions, but will skip the resolution phase,
 											allowing objects to detect certain collisions without responding to them.
