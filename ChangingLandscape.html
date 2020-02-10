@@ -57,43 +57,45 @@
 									</div>
 
 									<h3 class="major">Implementation</h3>
-									<p>
-										The scene was controlled using a scene graph.
-										Each node of the tree could contain a mesh to render,
-										a transform relative to the node’s parent, and
-										a shader if the child node needed to be rendered differently.
-									</p>
-									<p>
-										The terrain was generated using an index buffer,
-										and then reading a heightmap file to raise the vertices to the correct height.
-										Depending on the vertex height, the terrain was textured using one of two textures
-										(grass texture for lower terrain, and rock for higher) and given one of two bump maps,
-										allowing extra detail without having to provide extra vertices.
-										When texturing the terrain, Triplanar Texturing was used to prevent textures
-										from stretching in steep areas of the terrain.
-										To create the rising effect, the heightmap shader was passed a factor between 0 and 1.
+									<h4>The Terrain</h4>
+									<ul>
+									<li>The scene was controlled using a scene graph. Each node of the tree could contain a mesh,
+										a transform relative, and a shader, as well as a collection of child nodes.</li>
+									<li>The terrain was generated using an index buffer, and then reading a heightmap file
+										to raise the vertices to the correct height.</li>
+									<li>Depending on the fragment height, the terrain was textured using one of two
+										textures/bump maps, allowing extra detail without having to provide
+										extra vertices. (Grass texture for lower terrain, and rock for higher.)</li>
+									<li>Triplanar Texturing was used when texturing the terrain, to prevent textures
+										from stretching in steep areas of the terrain.</li>
+									<li>To create the rising effect, the heightmap shader was passed a factor between 0 and 1.
 										This determined how much the heightmap had risen at each vertex.
-										This was also used by an objects on the heightmap, so that their positions could be updated.
-									</p>
-									<img src="Images/CSC8502-2.png" alt="" width="75%"/>
-									<p>
-										The water was also created using an index buffer. However, rather than using a heightmap,
-										a rolling sine wave was used to create an illusion of waves.
-										Like the terrain, the water was given a texture and a bump map, however,
+										This was also used by an objects on the heightmap, so that their positions could be updated.</li>
+									</ul>
+									<img src="Images/CSC8502-2.png" alt="" width="50%"/>
+									<h4>Water and Cube Mapping</h4>
+									<ul>
+									<li>The water was also created using an index buffer, with
+										a rolling sine wave to create an illusion of waves.</li>
+									<li>In addition to a texture and bump map,
 										cube mapping was also used to give reflections of the distant mountains.
 										This is a similar technique to how the skybox was created, however,
 										different methods were used to calculate the direction vector used to sample the cube map.
-									</p>
-									<p>
-										Lighting was achieved using the Phong Lighting Model, providing calculations for ambient,
-										diffuse and specular lighting. The main light is a purely directional light, without an origin.
+									</ul>
+									<h4>Lighting and Shadows</h4>
+									<ul>
+									<li>Lighting was achieved using the Phong Lighting Model, providing calculations for ambient,
+										diffuse and specular lighting.</li>
+									<li>The main light is a purely directional light, without an origin.
 										Each of the lanterns create a point light centred at their origin.
-										Lastly, the UFO circling the landscape produces a spotlight which will only light
-										terrain within a given angle. Shadow mapping was then used to form the shadows
+										Lastly, the UFO produces a spotlight which will only light
+										terrain within a given angle.</li>
+									<li>Shadow mapping was then used to form the shadows
 										of the objects onto the terrain. This is done dynamically, allowing the shadows to
 										update when objects move.
-									</p>
-									<img src="Images/CSC8502-3.png" alt="" width="75%"/>
+									</ul>
+									<img src="Images/CSC8502-3.png" alt="" width="50%"/>
+									<h4>Post Processing</h4>
 									<p>
 										Several post processing effects were then added.
 										This was done by renderering the scene to a texture bound to a framebuffer.
@@ -115,16 +117,16 @@
 										This was done by rendering the scene twice (once from each camera’s perspective)
 										and applying them as textures to quads at one of two positions on the screen.
 									</p>
-									<img src="Images/CSC8502-5.png" alt="" width="75%"/>
-									<img src="Images/CSC8502-6.png" alt="" width="75%"/>
+									<img src="Images/CSC8502-5.png" alt="" width="50%"/>
+									<img src="Images/CSC8502-6.png" alt="" width="50%"/>
 
 									<h3 class="major">What I Learnt</h3>
 									<p>
 										Although I had done a previous graphics module,
 										this coursework gave me a far deeper understanding of OpenGL and graphics programming.
 										This was the largest OpenGL project I had done, and I was introduced to far more features.
-										In particular, the importance of organising the scene in a structured way,
-										using Scene Graphs, as well as using framebuffers to apply additional effects,
+										In particular, the importance of organising the scene, using Scene Graphs,
+										as well as using framebuffers to apply additional effects,
 										such as Post Processing, Shadow Mapping and Deferred Rendering.
 									</p>
 
@@ -155,11 +157,11 @@
 								<ul class="contact">
 									<li class="icon solid fa-phone">+447904816371</li>
 									<li class="icon solid fa-envelope"><a href="mailto:charsleyj@gmail.com">charsleyj@gmail.com</a></li>
-									<li class="icon brands fa-linkedin"><a href="#">LinkedIn account</a></li>
+									<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/jamie-charsley-1870ab132">LinkedIn account</a></li>
 								</ul>
 								<ul class="contact">
-									<li class="icon brands fa-github"><a href="#">Github: charsleyj (Personal)</a></li>
-									<li class="icon brands fa-github"><a href="#">Github: charsleyj1 (University)</a></li>
+									<li class="icon brands fa-github"><a href="https://github.com/charsleyj">Github: charsleyj (Personal)</a></li>
+									<li class="icon brands fa-github"><a href="https://github.com/charsleyj1">Github: charsleyj1 (University)</a></li>
 								</ul>
 								<ul class="copyright">
 									<li>&copy; James Charsley</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
