@@ -4194,22 +4194,6 @@ input, select, textarea {
 
 
 
-	.row > .column {
-	  padding: 0 8px;
-	}
-
-	.row:after {
-	  content: "";
-	  display: table;
-	  clear: both;
-	}
-
-	/* Create four equal columns that floats next to eachother */
-	.column {
-	  float: left;
-	  width: 25%;
-	}
-
 	/* The Modal (background) */
 	.modal {
 	  display: none;
@@ -4218,10 +4202,11 @@ input, select, textarea {
 	  padding-top: 100px;
 	  left: 0;
 	  top: 0;
+	  bottom: 0;
 	  width: 100%;
 	  height: 100%;
-	  overflow: auto;
-	  background-color: black;
+	  //overflow: auto;
+	  background-color: rgba(0,0,0,0.7);
 	}
 
 	/* Modal Content */
@@ -4230,7 +4215,7 @@ input, select, textarea {
 	  background-color: #fefefe;
 	  margin: auto;
 	  padding: 0;
-	  width: 90%;
+	  width: 60%;
 	  max-width: 1200px;
 	}
 
@@ -4295,22 +4280,10 @@ input, select, textarea {
 	  top: 0;
 	}
 
-	/* Caption text */
-	.caption-container {
-	  text-align: center;
-	  background-color: black;
-	  padding: 2px 16px;
-	  color: white;
-	}
-
-	img.demo {
-	  opacity: 0.6;
-	}
-
-	.active,
+	/* .active,
 	.demo:hover {
 	  opacity: 1;
-	}
+	} */
 
 	img.hover-shadow {
 	  transition: 0.3s;
