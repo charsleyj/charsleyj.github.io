@@ -4187,6 +4187,7 @@ input, select, textarea {
 	}
 
 	.GThumbnail {
+		cursor: pointer;
 		float: left;
 		width: 16.66%;
 		padding: 0.5%;
@@ -4212,28 +4213,11 @@ input, select, textarea {
 	/* Modal Content */
 	.modal-content {
 	  position: relative;
-	  background-color: #fefefe;
+	  //background-color: #000000;
 	  margin: auto;
 	  padding: 0;
 	  width: 60%;
 	  max-width: 1200px;
-	}
-
-	/* The Close Button */
-	.close {
-	  color: white;
-	  position: absolute;
-	  top: 10px;
-	  right: 25px;
-	  font-size: 35px;
-	  font-weight: bold;
-	}
-
-	.close:hover,
-	.close:focus {
-	  color: #999;
-	  text-decoration: none;
-	  cursor: pointer;
 	}
 
 	/* Hide the slides by default */
@@ -4243,6 +4227,7 @@ input, select, textarea {
 
 	/* Next & previous buttons */
 	.prev,
+	.close,
 	.next {
 	  cursor: pointer;
 	  position: absolute;
@@ -4265,7 +4250,14 @@ input, select, textarea {
 	  border-radius: 3px 0 0 3px;
 	}
 
+	.close {
+		top: 50px;
+		right: 0;
+	  	border-radius: 0 0 0 3px;
+	}
+
 	/* On hover, add a black background color with a little bit see-through */
+	.close:hover,
 	.prev:hover,
 	.next:hover {
 	  background-color: rgba(0, 0, 0, 0.8);
@@ -4278,17 +4270,4 @@ input, select, textarea {
 	  padding: 8px 12px;
 	  position: absolute;
 	  top: 0;
-	}
-
-	/* .active,
-	.demo:hover {
-	  opacity: 1;
-	} */
-
-	img.hover-shadow {
-	  transition: 0.3s;
-	}
-
-	.hover-shadow:hover {
-	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
