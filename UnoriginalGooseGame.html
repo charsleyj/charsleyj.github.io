@@ -63,9 +63,52 @@
 										</iframe>
 									</div>
 
-									<h3 class="major">Implementation</h3>
+									<!-- Images used to open the lightbox -->
+									<div class="GallaryThumbnails">
+										<img class="GThumbnail" src="images/CSC8503-1.png" width=100% onclick="openModal();currentSlide(1)"/>
+										<img class="GThumbnail" src="images/CSC8503-2.png" width=100% onclick="openModal();currentSlide(2)"/>
+										<img class="GThumbnail" src="images/CSC8503-3.png" width=100% onclick="openModal();currentSlide(3)"/>
+										<img class="GThumbnail" src="images/CSC8503-4.png" width=100% onclick="openModal();currentSlide(4)"/>
+										<img class="GThumbnail" src="images/CSC8503-5.png" width=100% onclick="openModal();currentSlide(5)"/>
+									</div>
 
-									<img src="images/CSC8503-2.png" alt="" width="60%"/>
+									<!-- The Modal/Lightbox -->
+									<div id="myModal" class="modal">
+									  <div class="modal-content">
+										<span class="close cursor" onclick="closeModal()">&times;</span>
+
+										<div class="mySlides">
+										  <div class="numbertext">1 / 5</div>
+										  <img src="images/CSC8503-1.png" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">2 / 5</div>
+										  <img src="images/CSC8503-2.png" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">3 / 5</div>
+										  <img src="images/CSC8503-3.png" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">4 / 5</div>
+										  <img src="images/CSC8503-4.png" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">5 / 5</div>
+										  <img src="images/CSC8503-5.png" style="width:100%">
+										</div>
+
+										<!-- Next/previous controls -->
+										<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+										<a class="next" onclick="plusSlides(1)">&#10095;</a>
+									  </div>
+								  </div>
+
+									<h3 class="major">Implementation</h3>
 
 									<h4>Physics</h4>
 									<ul>
@@ -74,8 +117,6 @@
 											This can result in both linear and angular motion, by applying
 											Semi-Implicit Euler Integration.</li>
 									</ul>
-
-									<img src="images/CSC8503-1.png" alt="" width="60%"/>
 
 									<h4>Collision Detection</h4>
 									<ul>
@@ -91,7 +132,6 @@
 											the number of collision pairs being tested.</li>
 									</ul>
 
-									<img src="images/CSC8503-4.png" alt="" width="60%"/>
 									<h4>Collision Resolution</h4>
 									<ul>
 										<li>Collisions are resolved using projection (adjusting the object positions
@@ -104,16 +144,12 @@
 											and by the goose home, which surrounds the island and will score items placed inside.</li>
 									</ul>
 
-									<img src="images/CSC8503-5.png" alt="" width="60%"/>
-
 									<h4>Artifical Intelligence</h4>
 									<ul>
 										<li>Finite State machines are used by enemies in the game, which will chase
 											the goose if it walks close by with an item.</li>
 										<li>A* pathfinding is then used when chasing the goose.</li>
 									</ul>
-
-									<img src="images/CSC8503-3.png" alt="" width="60%"/>
 
 									<h4>Networking</h4>
 									<ul>
@@ -177,6 +213,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/lightbox.js"></script>
 
 	</body>
 </html>
