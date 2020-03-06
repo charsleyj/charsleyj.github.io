@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>James Charsley</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">James Charsley</a></h1>
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>15-Tile Puzzle</h2>
+								<p>CSC8501-Advanced Programming for Games Courework</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Introduction</h3>
+									<p>
+										First coursework for the final year of my degree.
+										This is a simple C++ program that can generate 15-tile style puzzles (writing them to a file),
+										and calculate the number of rows and columns which can appear in order
+										(increment by 1 as you go right/down) of all the reachable states of the puzzle.
+										This is then written to a file.
+									</p>
+
+									<h3 class="major">What I Learnt</h3>
+									<p>
+										 This was the first time I had properly tackled a combinatory puzzle,
+										 thinking about how best go through each possible combination of tiles,
+										 counting rows/columns which were continuous.
+										 Also, although I had used C++ earlier in my degree,
+										 this module was a useful refresher of the language.
+									</p>
+
+									<h3 class="major">Implementation</h3>
+									<ul>
+										<li>The program is controlled by a main file
+											which handles menus and instantiation of other classes.</li>
+										<li>A factory class is used to create/load from file Configuration classes
+											which store the state of a particular puzzle.</li>
+										<li>The configuration class was extended to allow puzzles
+											of any rectangular size and tiles between 1-1,000,000.</li>
+										<li>A solver class takes in a series of configuration objects to solve.
+											The initial idea was to walk through each of the possible states,
+											counting the number of continuous rows/columns,
+											but is was felt this would be too slow for the larger puzzle sizes,
+											so an equation was used instead.</li>
+										<li>The solver then stores the solutions in a struct
+											to be printed to screen or written to a file.</li>
+									</ul>
+
+
+									<h3 class="major">Possible Improvements</h3>
+									<ul>
+										<li> The problem simply concerned 2d puzzles.
+											As such, further work could be done to storing and solving puzzles of arbitrary dimensions.</li>
+									</ul>
+								</div>
+							</div>
+
+					</section>
+
+					<!-- Footer -->
+						<section id="footer">
+							<div class="inner">
+								<h2 class="major">Get in touch</h2>
+								<ul class="contact">
+									<li class="icon solid fa-phone">+447904816371</li>
+									<li class="icon solid fa-envelope"><a href="mailto:charsleyj@gmail.com">charsleyj@gmail.com</a></li>
+								</ul>
+								<ul class="contact">
+									<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/jamie-charsley-1870ab132">LinkedIn account</a></li>
+									<li class="icon brands fa-github"><a href="https://github.com/charsleyj">Github: charsleyj</a></li>
+								</ul>
+								<ul class="copyright">
+									<li>&copy; James Charsley</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+						</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/lightbox.js"></script>
+
+	</body>
+</html>
