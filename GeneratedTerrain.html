@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>James Charsley</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">James Charsley</a></h1>
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Generated Terrain</h2>
+								<p>CSC3095-Stage 3 Project</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Introduction</h3>
+									<p>
+										The aim of this project was to create an infinite scrolling terrain
+										using procedural generation. I researched various uses and algorithms for
+										procedural generation, created a system for infinite scrolling
+										terrain using a couple of these algorithms, and compared them on performance and
+										graphical detail.
+									</p>
+
+									<h3 class="major">What I Learnt</h3>
+									<p>
+										As part of the research, I gained a far greater insight into procedural generation
+										than I had before, including the different type and uses of procedural generation,
+										as well as several algorithms. However, the software engineering aspect of the project
+										taught me the importance of good project management, planning the project in advance,
+										with plenty of room for problems to occur, and making sure that I kept to the plan,
+										updating it where necessary.
+									</p>
+
+									<h3 class="major">Images</h3>
+									<!-- Images used to open the lightbox -->
+									<div class="GallaryThumbnails">
+										<img class="GThumbnail" src="images/CSC3095-1.png" width=100% onclick="openModal();currentSlide(1)"/>
+										<img class="GThumbnail" src="images/CSC3095-2.png" width=100% onclick="openModal();currentSlide(2)"/>
+										<img class="GThumbnail" src="images/CSC3095-3.png" width=100% onclick="openModal();currentSlide(3)"/>
+										<img class="GThumbnail" src="images/CSC3095-4.png" width=100% onclick="openModal();currentSlide(4)"/>
+										<img class="GThumbnail" src="images/CSC3095-5.png" width=100% onclick="openModal();currentSlide(5)"/>
+										<img class="GThumbnail" src="images/CSC3095-6.png" width=100% onclick="openModal();currentSlide(6)"/>
+									</div>
+
+									<!-- The Modal/Lightbox -->
+									<div id="myModal" class="modal">
+									  <div class="modal-content">
+										<span class="close cursor" onclick="closeModal()">&times;</span>
+
+									    <div class="mySlides">
+									      <div class="numbertext">1 / 6</div>
+									      <img src="images/CSC3095-1.png" style="width:100%">
+									    </div>
+
+									    <div class="mySlides">
+									      <div class="numbertext">2 / 6</div>
+									      <img src="images/CSC3095-2.png" style="width:100%">
+									    </div>
+
+									    <div class="mySlides">
+									      <div class="numbertext">3 / 6</div>
+									      <img src="images/CSC3095-3.png" style="width:100%">
+									    </div>
+
+									    <div class="mySlides">
+									      <div class="numbertext">4 / 6</div>
+									      <img src="images/CSC3095-4.png" style="width:100%">
+									    </div>
+
+										<div class="mySlides">
+									      <div class="numbertext">5 / 6</div>
+									      <img src="images/CSC3095-5.png" style="width:100%">
+									    </div>
+
+										<div class="mySlides">
+									      <div class="numbertext">6 / 6</div>
+									      <img src="images/CSC3095-6.png" style="width:100%">
+									    </div>
+
+									    <!-- Next/previous controls -->
+									    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+									    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+									  </div>
+								  </div>
+
+									<h3 class="major">Implementation</h3>
+									<h4>Scrolling Terrain</h4>
+									<p>
+										To achieve the infinite scrolling effect, I spilt the world into square chunks,
+										organised into a scene graph. The renderer would then store a 5x5 grid
+										of these chunks surrounding the player. When the player moved into a new chunk,
+										rather than unloading and reloading in new chunks, I moved chunks now outside the
+										5x5 grid into a new position and updated their vertex positions.
+									</p>
+									<h4>Procedural Generation</h4>
+									<p>
+										I compared two different procedural generation techniques: Perlin Noise and Value Noise.
+										I ran each of them at 1, 2, and 3 octaves (the more octaves used,
+										the greater the detail but the slower the generation).
+										I then compared how detailed the output was as well as the frame time
+										it took to generate the results. I found that for the same number of octaves,
+										Perlin Noise took longer but produced better results than Value Noise, which was expected.
+										However, after several octaves, Value Noise could be ran with more octaves
+										quicker than Perlin Noise, producing more detailed terrain. Nevertheless,
+										it is still generally considered that Perlin Noise would produce more natural looking terrain,
+										regardless of the performance or level of detail.
+									</p>
+
+
+									<h3 class="major">Possible Improvements</h3>
+									<ul>
+										<li>During the project, the infinite scrolling was left toward the end of the project,
+											and suffered from slow down, with little time for me to see what was causing it.
+											As I now have far more experience with C++ and OpenGL than when I completed the project,
+											the first improvement I would make would be to reduce the slowdown of the effect.
+											Possible solutions may to improve the memory management of the meshes on the GPU,
+											or using shaders to either help with, or to control the generation of the terrain. </li>
+										<li>the original project mostly only focused on two PCG algorithms,
+											both of which relied on noise. Were I to continue this project,
+											I would look at far more PCG algorithms, including several which do not rely
+											on noise as much, such as the diamond square algorithm.</li>
+										<li>The program constructed the terrain using a 2D heightmap. It would be interesting
+											to see what effect would happen if the PCG techniques were applied to higher dimensions,
+											such as 3D or 4D space.</li>
+										<li>Lastly, the program focused purely of the generation of the base terrain shape,
+											however, I would also like to look at adding additional features, such as biomes,
+											vegetation or settlements and see how each of the algorithms reacted with each other.</li>
+									</ul>
+								</div>
+							</div>
+
+					</section>
+
+					<!-- Footer -->
+						<section id="footer">
+							<div class="inner">
+								<h2 class="major">Get in touch</h2>
+								<ul class="contact">
+									<li class="icon solid fa-phone">+447904816371</li>
+									<li class="icon solid fa-envelope"><a href="mailto:charsleyj@gmail.com">charsleyj@gmail.com</a></li>
+								</ul>
+								<ul class="contact">
+									<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/jamie-charsley-1870ab132">LinkedIn account</a></li>
+									<li class="icon brands fa-github"><a href="https://github.com/charsleyj">Github: charsleyj</a></li>
+								</ul>
+								<ul class="copyright">
+									<li>&copy; James Charsley</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+						</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/lightbox.js"></script>
+
+	</body>
+</html>

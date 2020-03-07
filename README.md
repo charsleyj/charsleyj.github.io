@@ -19,9 +19,10 @@ The website currently contains some of the work I did at university, however, I 
 - [Advanced Game Technologies: Unoriginal Goose Game](https://charsleyj.github.io/UnoriginalGooseGame.html) **C++**
 - [Advanced Graphics for Games: Changing Landscape](https://charsleyj.github.io/ChangingLandscape.html) **C++, OpenGL, GLSL**
 - [Advanced Programming for Games: 15 Tile Puzzle](https://charsleyj.github.io/15TilePuzzle.html) **C++**
+- [Stage 3 Project: Generated Terrain](https://charsleyj.github.io/GeneratedTerrain.html) **C++, OpenGL, GLSL**
 
 
 
 ## Credit
 
-The website design is based off the *Solid State* template from [HTML5 UP](https://html5up.net) under the CCA 3.0 license. 
+The website design is based off the *Solid State* template from [HTML5 UP](https://html5up.net) under the CCA 3.0 license.
