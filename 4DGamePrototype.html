@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>James Charsley</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">James Charsley</a></h1>
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>4D Game Prototype</h2>
+								<p>Ongoing Personal Project</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Introduction</h3>
+									<p>
+										This is a prototype for a 4D game which I am working on.
+										Based on the games Miegakure and Brane (previously known as Tetraspace),
+										the plan for the game is for the player to solve puzzles within a world
+										with 4 spatial dimensions. The player can move as normal in a 3d "hyperplane"
+										but has the ability to rotate this "hyperplane" 90 degrees around them,
+										allowing them to access different parts of the world.
+									</p>
+									<p>
+										At the moment, this is a simple 2D/3D prototype in JavaScript.
+										This was chosen as I needed an object oriented language that
+										I had some experience with and could easily draw lines to the screen with.
+										However, I aim to move over to either C++ (either using middleware,
+										or as part of the Unreal Engine) or C# (as part of Unity) when moving to 3D/4D space.
+									</p>
+
+
+									<h3 class="major">Images</h3>
+
+									<!-- Images used to open the lightbox -->
+									<div class="GallaryThumbnails">
+										<img class="GThumbnail" src="images/4dProto-1.png" width=100% onclick="openModal();currentSlide(1)"/>
+										<img class="GThumbnail" src="images/4dProto-2.png" width=100% onclick="openModal();currentSlide(2)"/>
+										<img class="GThumbnail" src="images/4dProto-3.png" width=100% onclick="openModal();currentSlide(3)"/>
+										<img class="GThumbnail" src="images/4dProto-4.png" width=100% onclick="openModal();currentSlide(4)"/>
+										<img class="GThumbnail" src="images/4dProto-5.png" width=100% onclick="openModal();currentSlide(5)"/>
+									</div>
+
+									<!-- The Modal/Lightbox -->
+									<div id="myModal" class="modal">
+									  <div class="modal-content">
+										<span class="close cursor" onclick="closeModal()">&times;</span>
+
+										<div class="mySlides">
+										  <div class="numbertext">1 / 5</div>
+										  <img src="images/4dProto-1.png" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">2 / 5</div>
+										  <img src="images/4dProto-2.png" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">3 / 5</div>
+										  <img src="images/4dProto-3.png" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">4 / 5</div>
+										  <img src="images/4dProto-4.png" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">5 / 5</div>
+										  <img src="images/4dProto-5.png" style="width:100%">
+										</div>
+
+										<!-- Next/previous controls -->
+										<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+										<a class="next" onclick="plusSlides(1)">&#10095;</a>
+									  </div>
+								  </div>
+
+									<h3 class="major">Current Progress</h3>
+									<p>
+										The prototype currently consists of 3 versions:
+									</p>
+									<ul>
+										<li> The first is a small program testing the core mechanic of the game.
+											The program calculates and renders the 2D cross-section of a 3D scene.
+											This allowed me to get an understanding of the maths required
+											for the project in a simpler scenario (1 fewer dimensions) with shapes
+											I could more easily visualise in my head.</li>
+										<li> The second is a very simple 2d game engine in JavaScript.
+											My aim is to move into a 3D game engine, most of which represent
+											the game objects using meshes formed of vertices. Most 2D game engines,
+											however, use sprites. So I needed a 2D engine which used vertex meshes
+											which I could easily modify.</li>
+										<li> In the third, I combined them both to create a simple platformer
+											with the core rotation mechanic, so that I could work out how to
+											incorporate the mechanic within a game engine.</li>
+									</ul>
+
+									<h3 class="major">Plans in the Future</h3>
+									<ul>
+										<li> Improve Code Quality </li>
+										<li> Extend the collision detection within the prototype.
+											Currently the game only performs collision detection along the visible plane.
+											I Would want to have a greater degree of 3d collision detection,
+											allowing the player to move blocks which extend through multiple planes. </li>
+										<li> Create a 3d/4d version within C++/Unity/Unreal of the core mechanic.
+											Most likely to use an existing engine.
+											Although I would be more limited within the engine,
+											I would have access to all the tools and existing code that engine would provide.
+											It may also help with porting the game to other platforms/engines
+											if I am able to have the game working within a 3D game engine.</li>
+									</ul>
+								</div>
+							</div>
+
+					</section>
+
+					<!-- Footer -->
+						<section id="footer">
+							<div class="inner">
+								<h2 class="major">Get in touch</h2>
+								<ul class="contact">
+									<li class="icon solid fa-phone">+447904816371</li>
+									<li class="icon solid fa-envelope"><a href="mailto:charsleyj@gmail.com">charsleyj@gmail.com</a></li>
+								</ul>
+								<ul class="contact">
+									<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/jamie-charsley-1870ab132">LinkedIn account</a></li>
+									<li class="icon brands fa-github"><a href="https://github.com/charsleyj">Github: charsleyj</a></li>
+								</ul>
+								<ul class="copyright">
+									<li>&copy; James Charsley</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+						</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/lightbox.js"></script>
+
+	</body>
+</html>
