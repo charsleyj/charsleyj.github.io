@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>James Charsley</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">James Charsley</a></h1>
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>4D Visualisation</h2>
+								<p>CSC8498 - Project for MComp</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Introduction</h3>
+									<p>
+										This was the final project of my degree.
+										The aim of this project was to compare different visualisations for rendering
+										interactive 4D objects in real-time. This was done using C++ and OpenGL using
+										Newcastle University's graphics framework, NCLGL.
+									</p>
+									<p>
+										Two different methods of visualisation were implemented, a wireframe projection
+										through the use of 5x5 transformation matrices similar to how 3D projection is performed,
+										and a 3D cross-section, through the use of the geometry shader.
+									</p>
+
+									<h3 class="major">What I Learnt</h3>
+									<p>
+										Throughout this project, I learnt a great deal with regards to 4D geometry,
+										different ways of visualising higher dimensional geometry,
+										as well as some of the mathematics than underpin 4D geometry.
+										This has encouraged me to continue investigating various ways 4D visualisation could be extended.
+										I have also expanded my knowledge of the OpenGL API, including additional primitives
+										that I was not aware of and various use cases for them, as well as use of the geometry shader.
+										This knowledge can also be taken outside of the scope of this project and applied in future projects.
+									</p>
+
+									<h3 class="major">Video</h3>
+									<div class="iframe-container">
+										<iframe allowfullscreen
+											src="https://www.youtube.com/embed/3GdIMmq2-l8?cc_load_policy=1">
+										</iframe>
+									</div>
+
+									<!-- Images used to open the lightbox -->
+									<div class="GallaryThumbnails">
+										<img class="GThumbnail" src="images/CSC8502-1.png" width=100% onclick="openModal();currentSlide(1)"/>
+										<img class="GThumbnail" src="images/CSC8502-2.png" width=100% onclick="openModal();currentSlide(2)"/>
+										<img class="GThumbnail" src="images/CSC8502-3.png" width=100% onclick="openModal();currentSlide(3)"/>
+										<img class="GThumbnail" src="images/CSC8502-4.png" width=100% onclick="openModal();currentSlide(4)"/>
+										<img class="GThumbnail" src="images/CSC8502-5.png" width=100% onclick="openModal();currentSlide(5)"/>
+										<img class="GThumbnail" src="images/CSC8502-6.png" width=100% onclick="openModal();currentSlide(6)"/>
+									</div>
+
+									<!-- The Modal/Lightbox -->
+									<div id="myModal" class="modal">
+									  <div class="modal-content">
+										<span class="close cursor" onclick="closeModal()">&times;</span>
+
+									    <div class="mySlides">
+									      <div class="numbertext">1 / 6</div>
+									      <img src="images/CSC8502-1.png" style="width:100%">
+									    </div>
+
+									    <div class="mySlides">
+									      <div class="numbertext">2 / 6</div>
+									      <img src="images/CSC8502-2.png" style="width:100%">
+									    </div>
+
+									    <div class="mySlides">
+									      <div class="numbertext">3 / 6</div>
+									      <img src="images/CSC8502-3.png" style="width:100%">
+									    </div>
+
+									    <div class="mySlides">
+									      <div class="numbertext">4 / 6</div>
+									      <img src="images/CSC8502-4.png" style="width:100%">
+									    </div>
+
+										<div class="mySlides">
+									      <div class="numbertext">5 / 6</div>
+									      <img src="images/CSC8502-5.png" style="width:100%">
+									    </div>
+
+										<div class="mySlides">
+									      <div class="numbertext">6 / 6</div>
+									      <img src="images/CSC8502-6.png" style="width:100%">
+									    </div>
+
+									    <!-- Next/previous controls -->
+									    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+									    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+									  </div>
+								  </div>
+
+									<h3 class="major">Implementation</h3>
+									<p>
+										Yet To Be Completed
+									</p>
+
+									<h3 class="major">Future Work / Possible Extensions</h3>
+									<ul>
+										<li> The first aspect I will extend is to include additional graphical techniques,
+											such as the use of 3D textures, skyboxes and possibly bumpmaps,
+											in particular with the cross section approach.</li>
+										<li> I would like to investigate alternative methods of visualisation,
+											as this project only implemented two. In particular,
+											several approaches could be implemented using ray marching.</li>
+										<li> I would like to add some simple physics/collision detection to the program,
+											extending it to a simple game similar to Meigakure or Brane (previously tetraspace).</li>
+										<li> Lastly, I would like to try to implement this within an existing engine,
+											such as Unity or Unreal Engine.</li>
+									</ul>
+								</div>
+							</div>
+
+					</section>
+
+					<!-- Footer -->
+						<section id="footer">
+							<div class="inner">
+								<h2 class="major">Get in touch</h2>
+								<ul class="contact">
+									<li class="icon solid fa-phone">+447904816371</li>
+									<li class="icon solid fa-envelope"><a href="mailto:charsleyj@gmail.com">charsleyj@gmail.com</a></li>
+								</ul>
+								<ul class="contact">
+									<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/jamie-charsley-1870ab132">LinkedIn account</a></li>
+									<li class="icon brands fa-github"><a href="https://github.com/charsleyj">Github: charsleyj</a></li>
+								</ul>
+								<ul class="copyright">
+									<li>&copy; James Charsley</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+						</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/lightbox.js"></script>
+
+	</body>
+</html>
