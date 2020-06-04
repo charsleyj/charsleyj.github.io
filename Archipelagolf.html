@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>James Charsley</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">James Charsley</a></h1>
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Archipelagolf (Unoriginal Golf Game)</h2>
+								<p>CSC8508-Engineering Gaming Solutions within a Team Project</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Introduction</h3>
+									<p>
+										This was the second piece of coursework for the final year of my degree.
+										The aim for the coursework was to use C++ and OpenGL to render a landscape
+										that changed over time. This was done using Newcastle University’s graphics framework,
+										NCLGL, which was built upon throughout the module.
+									</p>
+									<p>
+										For the coursework, I created a landscape that rose out of the water over time.
+										The landscape also featured several trees, lanterns,
+										a UFO and some models provided by the university.
+
+									</p>
+
+									<h3 class="major">What I Learnt</h3>
+									<p>
+										Although I had done a previous graphics module,
+										this coursework gave me a far deeper understanding of OpenGL and graphics programming.
+										This was the largest OpenGL project I had done, and I was introduced to far more features.
+										In particular, the importance of organising the scene, using Scene Graphs,
+										as well as using framebuffers to apply additional effects,
+										such as Post Processing, Shadow Mapping and Deferred Rendering.
+									</p>
+
+									<h3 class="major">Video</h3>
+									<div class="iframe-container">
+										<iframe allowfullscreen
+											src="https://www.youtube.com/embed/yaWfQjgR_ug?cc_load_policy=1">
+										</iframe>
+									</div>
+
+									<!-- Images used to open the lightbox -->
+									<div class="GallaryThumbnails">
+										<img class="GThumbnail" src="images/CSC8502-1.png" width=100% onclick="openModal();currentSlide(1)"/>
+										<img class="GThumbnail" src="images/CSC8502-2.png" width=100% onclick="openModal();currentSlide(2)"/>
+										<img class="GThumbnail" src="images/CSC8502-3.png" width=100% onclick="openModal();currentSlide(3)"/>
+										<img class="GThumbnail" src="images/CSC8502-4.png" width=100% onclick="openModal();currentSlide(4)"/>
+										<img class="GThumbnail" src="images/CSC8502-5.png" width=100% onclick="openModal();currentSlide(5)"/>
+										<img class="GThumbnail" src="images/CSC8502-6.png" width=100% onclick="openModal();currentSlide(6)"/>
+									</div>
+
+									<!-- The Modal/Lightbox -->
+									<div id="myModal" class="modal">
+									  <div class="modal-content">
+										<span class="close cursor" onclick="closeModal()">&times;</span>
+
+									    <div class="mySlides">
+									      <div class="numbertext">1 / 6</div>
+									      <img src="images/CSC8502-1.png" style="width:100%">
+									    </div>
+
+									    <div class="mySlides">
+									      <div class="numbertext">2 / 6</div>
+									      <img src="images/CSC8502-2.png" style="width:100%">
+									    </div>
+
+									    <div class="mySlides">
+									      <div class="numbertext">3 / 6</div>
+									      <img src="images/CSC8502-3.png" style="width:100%">
+									    </div>
+
+									    <div class="mySlides">
+									      <div class="numbertext">4 / 6</div>
+									      <img src="images/CSC8502-4.png" style="width:100%">
+									    </div>
+
+										<div class="mySlides">
+									      <div class="numbertext">5 / 6</div>
+									      <img src="images/CSC8502-5.png" style="width:100%">
+									    </div>
+
+										<div class="mySlides">
+									      <div class="numbertext">6 / 6</div>
+									      <img src="images/CSC8502-6.png" style="width:100%">
+									    </div>
+
+									    <!-- Next/previous controls -->
+									    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+									    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+									  </div>
+								  </div>
+
+									<h3 class="major">Implementation</h3>
+
+									<h4>The Terrain</h4>
+									<ul>
+									<li>The scene was controlled using a scene graph. Each node of the tree could contain a mesh,
+										a transform relative, and a shader, as well as a collection of child nodes.</li>
+									<li>The terrain was generated using an index buffer, and then reading a heightmap file
+										to raise the vertices to the correct height.</li>
+									<li>Depending on the fragment height, the terrain was textured using one of two
+										textures/bump maps, allowing extra detail without having to provide
+										extra vertices. (Grass texture for lower terrain, and rock for higher.)</li>
+									<li>Triplanar Texturing was used when texturing the terrain, to prevent textures
+										from stretching in steep areas of the terrain.</li>
+									<li>To create the rising effect, the heightmap shader was passed a factor between 0 and 1.
+										This determined how much the heightmap had risen at each vertex.
+										This was also used by an objects on the heightmap, so that their positions could be updated.</li>
+									</ul>
+
+									<h4>Water and Cube Mapping</h4>
+									<ul>
+									<li>The water was also created using an index buffer, with
+										a rolling sine wave to create an illusion of waves.</li>
+									<li>In addition to a texture and bump map,
+										cube mapping was also used to give reflections of the distant mountains.
+										This is a similar technique to how the skybox was created, however,
+										different methods were used to calculate the direction vector used to sample the cube map.
+									</ul>
+
+									<h4>Lighting and Shadows</h4>
+									<ul>
+									<li>Lighting was achieved using the Phong Lighting Model, providing calculations for ambient,
+										diffuse and specular lighting.</li>
+									<li>The main light is a purely directional light, without an origin.
+										Each of the lanterns create a point light centred at their origin.
+										Lastly, the UFO produces a spotlight which will only light
+										terrain within a given angle.</li>
+									<li>Shadow mapping was then used to form the shadows
+										of the objects onto the terrain. This is done dynamically, allowing the shadows to
+										update when objects move.
+									</ul>
+
+									<h4>Post Processing</h4>
+									<p>
+										Several post processing effects were then added.
+										This was done by renderering the scene to a texture bound to a framebuffer.
+										This could then sampled in post processing steps before being rendered
+										to the screen using a quad.
+									</p>
+										Post processing effects included:
+										<ul>
+											<li>A general gaussian blur using ping pong processing.</li>
+											<li>A modified version to create a depth of field effect by sampling the depth buffer.</li>
+											<li>2 versions of Sobel Edge Detection
+												(a traditional black and white version, and a coloured version).</li>
+											<li>A simple Gameboy filter by setting the pixel to one of 4 colours
+												based on the pixels ‘intensity’.</li>
+										</ul>
+									</p>
+									<p>
+										A split screen was also added, with each sub-screen allowing its own post processing effect.
+										This was done by rendering the scene twice (once from each camera’s perspective)
+										and applying them as textures to quads at one of two positions on the screen.
+									</p>
+
+									<h3 class="major">Possible Improvements</h3>
+									<ul>
+										<li> I would improve the quality of some of the code.
+											As the coursework had a scrict deadline, there was little time to improve code
+											after it was made functional, especially towards the end of coursework period.</li>
+										<li> There were several features I would have liked to add if I had more time.
+											These would include particle effects such as rain or snow,
+											deferred rendering to allow more lights, and potentially trees and vegetation
+											that dynamically grew over time.</li>
+										<li> The camera in the project currently follows a path using linear interpolation,
+											resulting in an angular path. I would instead like to replace this with a spline,
+											such as Catmull rom, to allow smoother movement.</li>
+										<li> Lastly, I would like to expand the scene out, as it is currently limited
+											to a small rectangular area.</li>
+									</ul>
+								</div>
+							</div>
+
+					</section>
+
+					<!-- Footer -->
+						<section id="footer">
+							<div class="inner">
+								<h2 class="major">Get in touch</h2>
+								<ul class="contact">
+									<li class="icon solid fa-phone">+447904816371</li>
+									<li class="icon solid fa-envelope"><a href="mailto:charsleyj@gmail.com">charsleyj@gmail.com</a></li>
+								</ul>
+								<ul class="contact">
+									<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/jamie-charsley-1870ab132">LinkedIn account</a></li>
+									<li class="icon brands fa-github"><a href="https://github.com/charsleyj">Github: charsleyj</a></li>
+								</ul>
+								<ul class="copyright">
+									<li>&copy; James Charsley</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+						</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/lightbox.js"></script>
+
+	</body>
+</html>
