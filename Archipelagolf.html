@@ -37,26 +37,27 @@
 
 									<h3 class="major">Introduction</h3>
 									<p>
-										This was the second piece of coursework for the final year of my degree.
-										The aim for the coursework was to use C++ and OpenGL to render a landscape
-										that changed over time. This was done using Newcastle University’s graphics framework,
-										NCLGL, which was built upon throughout the module.
+										This was the team project for the final year of my degree. As part of a team of 8,
+										the aim of the project was to use C++ to create a multi-platform game for Windows and PS4.
+										The game needed to be a 3D golf game where the player was able to change the fundamental
+										rules of the game as they played, inspired by "What the Golf" and "Baba is You".
 									</p>
 									<p>
-										For the coursework, I created a landscape that rose out of the water over time.
-										The landscape also featured several trees, lanterns,
-										a UFO and some models provided by the university.
-
+										For our game, in addition to the core golf mechanics, we created 3 main mechanics:
+										Adjustable gravity, possessable objects, and adjustable time.
+										Unfortunately, we were unable to finish the project due to the COVID-19 lockdown
+										causing the project to be finished early.
 									</p>
 
 									<h3 class="major">What I Learnt</h3>
 									<p>
-										Although I had done a previous graphics module,
-										this coursework gave me a far deeper understanding of OpenGL and graphics programming.
-										This was the largest OpenGL project I had done, and I was introduced to far more features.
-										In particular, the importance of organising the scene, using Scene Graphs,
-										as well as using framebuffers to apply additional effects,
-										such as Post Processing, Shadow Mapping and Deferred Rendering.
+										As the largest project I have worked on to date, this gave me a huge insight
+										into how large projects are structured and the complexities involved when working on them.
+										This was especially true due to the multi-platform nature of the game,
+										as I have not worked on any other cross-platform project before.
+										Lastly, working on a team project the large has re-enforced the importance
+										of version control software throughout the project, such as GitHub,
+										due to different people working on different parts of the program at any one time.
 									</p>
 
 									<h3 class="major">Video</h3>
@@ -66,135 +67,38 @@
 										</iframe>
 									</div>
 
-									<!-- Images used to open the lightbox -->
-									<div class="GallaryThumbnails">
-										<img class="GThumbnail" src="images/CSC8502-1.png" width=100% onclick="openModal();currentSlide(1)"/>
-										<img class="GThumbnail" src="images/CSC8502-2.png" width=100% onclick="openModal();currentSlide(2)"/>
-										<img class="GThumbnail" src="images/CSC8502-3.png" width=100% onclick="openModal();currentSlide(3)"/>
-										<img class="GThumbnail" src="images/CSC8502-4.png" width=100% onclick="openModal();currentSlide(4)"/>
-										<img class="GThumbnail" src="images/CSC8502-5.png" width=100% onclick="openModal();currentSlide(5)"/>
-										<img class="GThumbnail" src="images/CSC8502-6.png" width=100% onclick="openModal();currentSlide(6)"/>
-									</div>
-
-									<!-- The Modal/Lightbox -->
-									<div id="myModal" class="modal">
-									  <div class="modal-content">
-										<span class="close cursor" onclick="closeModal()">&times;</span>
-
-									    <div class="mySlides">
-									      <div class="numbertext">1 / 6</div>
-									      <img src="images/CSC8502-1.png" style="width:100%">
-									    </div>
-
-									    <div class="mySlides">
-									      <div class="numbertext">2 / 6</div>
-									      <img src="images/CSC8502-2.png" style="width:100%">
-									    </div>
-
-									    <div class="mySlides">
-									      <div class="numbertext">3 / 6</div>
-									      <img src="images/CSC8502-3.png" style="width:100%">
-									    </div>
-
-									    <div class="mySlides">
-									      <div class="numbertext">4 / 6</div>
-									      <img src="images/CSC8502-4.png" style="width:100%">
-									    </div>
-
-										<div class="mySlides">
-									      <div class="numbertext">5 / 6</div>
-									      <img src="images/CSC8502-5.png" style="width:100%">
-									    </div>
-
-										<div class="mySlides">
-									      <div class="numbertext">6 / 6</div>
-									      <img src="images/CSC8502-6.png" style="width:100%">
-									    </div>
-
-									    <!-- Next/previous controls -->
-									    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-									    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-									  </div>
-								  </div>
-
 									<h3 class="major">Implementation</h3>
-
-									<h4>The Terrain</h4>
-									<ul>
-									<li>The scene was controlled using a scene graph. Each node of the tree could contain a mesh,
-										a transform relative, and a shader, as well as a collection of child nodes.</li>
-									<li>The terrain was generated using an index buffer, and then reading a heightmap file
-										to raise the vertices to the correct height.</li>
-									<li>Depending on the fragment height, the terrain was textured using one of two
-										textures/bump maps, allowing extra detail without having to provide
-										extra vertices. (Grass texture for lower terrain, and rock for higher.)</li>
-									<li>Triplanar Texturing was used when texturing the terrain, to prevent textures
-										from stretching in steep areas of the terrain.</li>
-									<li>To create the rising effect, the heightmap shader was passed a factor between 0 and 1.
-										This determined how much the heightmap had risen at each vertex.
-										This was also used by an objects on the heightmap, so that their positions could be updated.</li>
-									</ul>
-
-									<h4>Water and Cube Mapping</h4>
-									<ul>
-									<li>The water was also created using an index buffer, with
-										a rolling sine wave to create an illusion of waves.</li>
-									<li>In addition to a texture and bump map,
-										cube mapping was also used to give reflections of the distant mountains.
-										This is a similar technique to how the skybox was created, however,
-										different methods were used to calculate the direction vector used to sample the cube map.
-									</ul>
-
-									<h4>Lighting and Shadows</h4>
-									<ul>
-									<li>Lighting was achieved using the Phong Lighting Model, providing calculations for ambient,
-										diffuse and specular lighting.</li>
-									<li>The main light is a purely directional light, without an origin.
-										Each of the lanterns create a point light centred at their origin.
-										Lastly, the UFO produces a spotlight which will only light
-										terrain within a given angle.</li>
-									<li>Shadow mapping was then used to form the shadows
-										of the objects onto the terrain. This is done dynamically, allowing the shadows to
-										update when objects move.
-									</ul>
-
-									<h4>Post Processing</h4>
 									<p>
-										Several post processing effects were then added.
-										This was done by renderering the scene to a texture bound to a framebuffer.
-										This could then sampled in post processing steps before being rendered
-										to the screen using a quad.
+										There were two main areas of the project that I was responsible for.
+										The graphics framework and the Level loading.
 									</p>
-										Post processing effects included:
-										<ul>
-											<li>A general gaussian blur using ping pong processing.</li>
-											<li>A modified version to create a depth of field effect by sampling the depth buffer.</li>
-											<li>2 versions of Sobel Edge Detection
-												(a traditional black and white version, and a coloured version).</li>
-											<li>A simple Gameboy filter by setting the pixel to one of 4 colours
-												based on the pixels ‘intensity’.</li>
-										</ul>
-									</p>
-									<p>
-										A split screen was also added, with each sub-screen allowing its own post processing effect.
-										This was done by rendering the scene twice (once from each camera’s perspective)
-										and applying them as textures to quads at one of two positions on the screen.
-									</p>
+									<h4>Graphics</h4>
+									<ul>
+										<li>For the project, I combined the graphics frameworks
+											for the previous two modules: NCLGL from Advanced Graphics for Games,
+											and OpenGL Rendering from Game Technologies.
+											This was because each of the frameworks contained aspects
+											which we wanted to include.</li>
+										<li>I also added Cube Mapping (primarily for the skybox),
+											post processing effects, and extended the lighting/shadow mapping
+											of the framework. Sadly I was unable to add some of these features
+											to the PS4 build due to the project being cut short.</li>
+									</ul>
+									<h4>Level Loading</h4>
+									<ul>
+										<li>A CSV file format was used for storing the levels.</li>
+										<li>These were generated from a Unity script which
+											would take a constructed scene and output it into a file.</li>
+										<li>This could then be read into a buffered level
+											within the game itself.</li>
+									</ul>
 
 									<h3 class="major">Possible Improvements</h3>
 									<ul>
-										<li> I would improve the quality of some of the code.
-											As the coursework had a scrict deadline, there was little time to improve code
-											after it was made functional, especially towards the end of coursework period.</li>
-										<li> There were several features I would have liked to add if I had more time.
-											These would include particle effects such as rain or snow,
-											deferred rendering to allow more lights, and potentially trees and vegetation
-											that dynamically grew over time.</li>
-										<li> The camera in the project currently follows a path using linear interpolation,
-											resulting in an angular path. I would instead like to replace this with a spline,
-											such as Catmull rom, to allow smoother movement.</li>
-										<li> Lastly, I would like to expand the scene out, as it is currently limited
-											to a small rectangular area.</li>
+										<li> The obvious improvement would have been to complete the game,
+											even if this was only the Windows side. </li>
+										<li> If we were to do the project again, we would not have branched
+											out as much as we did, as well as focusing more on the PS4 side earlier on.</li>
 									</ul>
 								</div>
 							</div>
