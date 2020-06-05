@@ -118,10 +118,77 @@
 								  </div>
 
 									<h3 class="major">Implementation</h3>
-									<p>
-										Yet To Be Completed
-									</p>
-
+									<h4>Representing Vertices</h4>
+									<ul>
+										<li>The 4D vertices are represented in C++ as a Vector4
+											and transformed by a Matrix5.</li>
+										<li>However, the GLSL shaders do not support a mat5 type,
+											therefore the transformation matrices are represented in GLSL
+											as a static array of 25 floats,
+											with functions for the required operations.</li>
+									</ul>
+									<h4>Wireframe Projection</h4>
+									<ul>
+										<li>Similar to how 3D projection is achieved
+											using transformation matrices, however, before doing so,
+											there is an additional phase to project the 4D vertices
+											onto a 3D 'image plane'.</li>
+										<li>Vertices are transformed from local space to world space
+											using a 5x5 model matrix. These are then projected
+											onto a 3D 'image plane' using a 5x5 projection matrix,
+											followed by a manual perspective divide.
+											The vertices are then transformed using the 4x4 view
+											and projection matrices as part of the normal 3D rendering process.</li>
+										<li>The use of a wireframe is needed to allow the user
+											to view inside the outer boundary (envelope) of the projection.
+											This also simplifies the meshes used,
+											requiring only a set of line primitives of 4D positions.</li>
+										<li>Depth cueing is used on the lines to add additional
+											sense of depth of the w axis. The further along the w axis a vertex is,
+											the darker it becomes.</li>
+										<li>By using a projection matrix,
+											it becomes easier to adjust the projection within the C++ code,
+											without having to reload the entire shader.</li>
+										<li>2 projection matrices were used
+											<ul>
+												<li>Oblique: Retains parallel lines at an angle to the image plane,
+													but provides no sense of depth. This is done
+													by adding the w coordinate to the x,y and z coordinates
+													using a given factor.</li>
+												<li>Perspective: Distorts parallel lines but
+													provides a sense of depth using foreshortening.
+													This is done by extending the 3D perspective matrix
+													to add an additional dimension.</li>
+											</ul></li>
+										<li>This was the quicker of the two visualisations.
+											You can also see the entire object at once,
+											but the projection can't display surfaces of the object,
+											as such, it can only present the position and colour of the vertices.</li>
+									</ul>
+									<h4>3D Cross-Section</h4>
+									<ul>
+										<li>Similar to how an MRI scan takes 2d 'slices' of a 3D object,
+											this renders a 3d 'slice' of the 4D object.</li>
+										<li>Mesh data formed of tetrahedron shaped primitives.
+											This is achieved using the Line Adjacency primitive.</li>
+										<li>Geometry shader used to calculate the intersection
+											of the object and plane. This splits each primitive into
+											each triangle and then into each line.</li>
+										<li>For each line, the distance from the 'plane'
+											of both vertices is calculated. If their on the same side,
+											they are ignored. If a vertex is on the line,
+											that vertex is emitted to the fragment shader.
+											Otherwise, the distance of the intersection along the line
+											is calculated and a new vertex is emitted by
+											interpolating each attribute of the two line vertices.</li>
+										<li>Slower as the program has to calculate new vertices
+											for where the cross-section occurs.
+											You can also only see a section of the object
+											and can be difficult to work out the shapes
+											of the cells that make up the object.
+											However, this renders the object surface,
+											allowing possibility of lighting, textures and reflections.</li>
+									</ul>
 									<h3 class="major">Future Work / Possible Extensions</h3>
 									<ul>
 										<li> The first aspect I will extend is to include additional graphical techniques,
