@@ -107,37 +107,36 @@
 						</div>
 
 						<h3 class="major">Implementation</h3>
-						<h4>Scrolling Terrain</h4>
+
+						<h4>Scrolling Terrain (Scene Graph)</h4>
 						<p>
-							To achieve the infinite scrolling effect, I spilt the world into square chunks,
-							organised into a scene graph. The renderer would then store a 5x5 grid
-							of these chunks surrounding the player. When the player moved into a new chunk,
-							rather than unloading and reloading in new chunks, I moved chunks now outside the
-							5x5 grid into a new position and updated their vertex positions.
-						</p>
-						<h4>Procedural Generation</h4>
-						<p>
-							I compared two different procedural generation techniques: Perlin Noise and Value Noise.
-							I ran each of them at 1, 2, and 3 octaves (the more octaves used,
-							the greater the detail but the slower the generation).
-							I then compared how detailed the output was as well as the frame time
-							it took to generate the results. I found that for the same number of octaves,
-							Perlin Noise took longer but produced better results than Value Noise, which was expected.
-							However, after several octaves, Value Noise could be ran with more octaves
-							quicker than Perlin Noise, producing more detailed terrain. Nevertheless,
-							it is still generally considered that Perlin Noise would produce more natural looking terrain,
-							regardless of the performance or level of detail.
+							To achieve infinite scrolling, I spilt the world into square chunks,
+							organised in a scene graph. The renderer stored a 5x5 grid
+							of these chunks around the player. When the player moved into a new chunk,
+							rather than unloading and reloading in new chunks, chuncks were moved
+							into a new position.
 						</p>
 
+						<h4>Procedural Generation</h4>
+						<p>
+							Two different procedural generation techniques were compared: Perlin Noise and Value Noise.
+							I ran each of them at 1, 2, and 3 octaves (the more octaves used,
+							the greater the detail but the slower the generation).
+							I then compared the generation time and how detailed the output was.
+							For the same number of octaves, Perlin Noise took longer but produced better results
+							than Value Noise. However, after several octaves, Value Noise could be ran with more octaves
+							quicker than Perlin Noise, producing more detailed terrain. Though,
+							it's still generally considered that Perlin Noise produces more natural looking terrain,
+							regardless of performance or level of detail.
+						</p>
 
 						<h3 class="major">Possible Improvements</h3>
 						<ul>
-							<li>During the project, the infinite scrolling was left toward the end of the project,
-								and suffered from slow down, with little time for me to see what was causing it.
-								As I now have far more experience with C++ and OpenGL than when I completed the project,
-								the first improvement I would make would be to reduce the slowdown of the effect.
-								Possible solutions may to improve the memory management of the meshes on the GPU,
-								or using shaders to either help with, or to control the generation of the terrain. </li>
+							<li>The infinite scrolling was left toward the end of the project,
+								and suffered from slow down, with little time to see what was causing it.
+								As I now have far more experience with C++ and OpenGL, I would reduce the slowdown of the effect.
+								Possible solutions may be to improve the memory management of the meshes on the GPU,
+								or using shaders to help with/control the generation of the terrain. </li>
 							<li>the original project mostly only focused on two PCG algorithms,
 								both of which relied on noise. Were I to continue this project,
 								I would look at far more PCG algorithms, including several which do not rely
@@ -145,7 +144,7 @@
 							<li>The program constructed the terrain using a 2D heightmap. It would be interesting
 								to see what effect would happen if the PCG techniques were applied to higher dimensions,
 								such as 3D or 4D space.</li>
-							<li>Lastly, the program focused purely of the generation of the base terrain shape,
+							<li>The program focused purely of the generation of the base terrain shape,
 								however, I would also like to look at adding additional features, such as biomes,
 								vegetation or settlements and see how each of the algorithms reacted with each other.</li>
 						</ul>
