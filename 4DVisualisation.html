@@ -27,7 +27,7 @@
 						<header>
 							<div class="inner">
 								<h2>4D Visualisation</h2>
-								<p>CSC8498 - Project and Dissertation for MComp</p>
+								<p>CSC8498 - Project and Dissertation for MComp (C++ / OpenGL)</p>
 							</div>
 						</header>
 
@@ -37,20 +37,20 @@
 
 									<h3 class="major">Introduction</h3>
 									<p>
-										This was the final project of my degree.
-										The aim of this project was to compare different visualisations for rendering
-										interactive 4D objects in real-time. This was done using C++ and OpenGL using
+										The final project of my degree.
+										The aim of this project was to compare different approaches for visualising
+										interactive 4D objects in real-time. This was done using C++ and OpenGL by extending
 										Newcastle University's graphics framework, NCLGL.
 									</p>
 									<p>
 										Two different methods of visualisation were implemented, a wireframe projection
-										through the use of 5x5 transformation matrices similar to how 3D projection is performed,
-										and a 3D cross-section, through the use of the geometry shader.
+										using 5x5 transformation matrices, similar to how 3D projection is performed,
+										and a 3D cross-section, using the geometry shader.
 									</p>
 
 									<h3 class="major">What I Learnt</h3>
 									<p>
-										Throughout this project, I learnt a great deal with regards to 4D geometry,
+										Throughout the project, I learnt a great deal regarding 4D geometry,
 										different ways of visualising higher dimensional geometry,
 										as well as some of the mathematics than underpin 4D geometry.
 										This has encouraged me to continue investigating various ways 4D visualisation could be extended.
@@ -120,17 +120,17 @@
 									<h3 class="major">Implementation</h3>
 									<h4>Representing Vertices</h4>
 									<ul>
-										<li>The 4D vertices are represented in C++ as a Vector4
+										<li>4D vertices are represented in C++ as a Vector4
 											and transformed by a Matrix5.</li>
 										<li>However, the GLSL shaders do not support a mat5 type,
 											therefore the transformation matrices are represented in GLSL
 											as a static array of 25 floats,
-											with functions for the required operations.</li>
+											with functions for required operations.</li>
 									</ul>
 									<h4>Wireframe Projection</h4>
 									<ul>
-										<li>Similar to how 3D projection is achieved
-											using transformation matrices, however, before doing so,
+										<li>Similar to 3D projection
+											using transformation matrices, however,
 											there is an additional phase to project the 4D vertices
 											onto a 3D 'image plane'.</li>
 										<li>Vertices are transformed from local space to world space
@@ -139,17 +139,14 @@
 											followed by a manual perspective divide.
 											The vertices are then transformed using the 4x4 view
 											and projection matrices as part of the normal 3D rendering process.</li>
-										<li>The use of a wireframe is needed to allow the user
+										<li>The wireframe is needed to allow the user
 											to view inside the outer boundary (envelope) of the projection.
 											This also simplifies the meshes used,
 											requiring only a set of line primitives of 4D positions.</li>
-										<li>Depth cueing is used on the lines to add additional
-											sense of depth of the w axis. The further along the w axis a vertex is,
+										<li>Depth cueing is used to add additional
+											sense of depth of the w axis. The further along the w axis a fragment is,
 											the darker it becomes.</li>
-										<li>By using a projection matrix,
-											it becomes easier to adjust the projection within the C++ code,
-											without having to reload the entire shader.</li>
-										<li>2 projection matrices were used
+										<li>2 projection matrices were used:
 											<ul>
 												<li>Oblique: Retains parallel lines at an angle to the image plane,
 													but provides no sense of depth. This is done
@@ -160,10 +157,6 @@
 													This is done by extending the 3D perspective matrix
 													to add an additional dimension.</li>
 											</ul></li>
-										<li>This was the quicker of the two visualisations.
-											You can also see the entire object at once,
-											but the projection can't display surfaces of the object,
-											as such, it can only present the position and colour of the vertices.</li>
 									</ul>
 									<h4>3D Cross-Section</h4>
 									<ul>
@@ -173,22 +166,32 @@
 											This is achieved using the Line Adjacency primitive.</li>
 										<li>Geometry shader used to calculate the intersection
 											of the object and plane. This splits each primitive into
-											each triangle and then into each line.</li>
+											triangles and then lines.</li>
 										<li>For each line, the distance from the 'plane'
-											of both vertices is calculated. If their on the same side,
+											to each vertices is calculated. If they're on the same side,
 											they are ignored. If a vertex is on the line,
 											that vertex is emitted to the fragment shader.
 											Otherwise, the distance of the intersection along the line
 											is calculated and a new vertex is emitted by
 											interpolating each attribute of the two line vertices.</li>
-										<li>Slower as the program has to calculate new vertices
+									</ul>
+
+									<h4>Findings</h4>
+									<ul>
+										<li>The wireframe projection was the quicker of the two visualisations.
+											You can also see the entire object at once,
+											but the projection can't display surfaces of the object,
+											as such, it can only present the position and colour of the vertices.</li>
+										<li>The 3D cross-section was slower as the program had to calculate new vertices
 											for where the cross-section occurs.
 											You can also only see a section of the object
 											and can be difficult to work out the shapes
 											of the cells that make up the object.
 											However, this renders the object surface,
 											allowing possibility of lighting, textures and reflections.</li>
+
 									</ul>
+
 									<h3 class="major">Future Work / Possible Extensions</h3>
 									<ul>
 										<li> The first aspect I will extend is to include additional graphical techniques,
@@ -199,7 +202,7 @@
 											several approaches could be implemented using ray marching.</li>
 										<li> I would like to add some simple physics/collision detection to the program,
 											extending it to a simple game similar to Meigakure or Brane (previously tetraspace).</li>
-										<li> Lastly, I would like to try to implement this within an existing engine,
+										<li> I would like to try to implement this within an existing engine,
 											such as Unity or Unreal Engine.</li>
 									</ul>
 								</div>
