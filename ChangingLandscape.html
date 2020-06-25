@@ -27,7 +27,10 @@
 						<header>
 							<div class="inner">
 								<h2>Changing Landscape</h2>
-								<p>CSC8502-Advanced Graphics for Games Courework</p>
+								<p>
+									CSC8502-Advanced Graphics for Games (C++ / OpenGL) -
+									<a href="https://github.com/charsleyj/public-examples">Code Samples</a>
+								</p>
 							</div>
 						</header>
 
@@ -37,15 +40,13 @@
 
 									<h3 class="major">Introduction</h3>
 									<p>
-										This was the second piece of coursework for the final year of my degree.
-										The aim for the coursework was to use C++ and OpenGL to render a landscape
+										The second piece of coursework for the final year of my degree.
+										The aim was to use C++ and OpenGL to render a landscape
 										that changed over time. This was done using Newcastle University’s graphics framework,
 										NCLGL, which was built upon throughout the module.
-									</p>
-									<p>
-										For the coursework, I created a landscape that rose out of the water over time.
-										The landscape also featured several trees, lanterns,
-										a UFO and some models provided by the university.
+										I created a landscape that rose out of the water over time.
+										The landscape featured multi-texturing and bump mapping for the heightmap,
+										cube maps for the skybox and water reflections, as well as lighting and shadow mapping.
 
 									</p>
 
@@ -54,8 +55,8 @@
 										Although I had done a previous graphics module,
 										this coursework gave me a far deeper understanding of OpenGL and graphics programming.
 										This was the largest OpenGL project I had done, and I was introduced to far more features.
-										In particular, the importance of organising the scene, using Scene Graphs,
-										as well as using framebuffers to apply additional effects,
+										In particular, the importance of organising the scene using Scene Graphs,
+										and using framebuffers to apply additional effects,
 										such as Post Processing, Shadow Mapping and Deferred Rendering.
 									</p>
 
@@ -121,48 +122,39 @@
 
 									<h4>The Terrain</h4>
 									<ul>
-									<li>The scene was controlled using a scene graph. Each node of the tree could contain a mesh,
-										a transform relative, and a shader, as well as a collection of child nodes.</li>
-									<li>The terrain was generated using an index buffer, and then reading a heightmap file
-										to raise the vertices to the correct height.</li>
-									<li>Depending on the fragment height, the terrain was textured using one of two
-										textures/bump maps, allowing extra detail without having to provide
-										extra vertices. (Grass texture for lower terrain, and rock for higher.)</li>
-									<li>Triplanar Texturing was used when texturing the terrain, to prevent textures
-										from stretching in steep areas of the terrain.</li>
-									<li>To create the rising effect, the heightmap shader was passed a factor between 0 and 1.
-										This determined how much the heightmap had risen at each vertex.
-										This was also used by an objects on the heightmap, so that their positions could be updated.</li>
+									<li>A scene graph was used, with each node containing a mesh,
+										transformation, shader, and a collection of child nodes.</li>
+									<li>The terrain used a heightmap to populate an index buffered mesh.</li>
+									<li>The water also used an index buffer, with a rolling sine wave to create waves.</li>
+									<li>To create the rising effect, the heightmap shader
+										and object positions were passed a factor between 0 and 1.
+										This determined how much the heightmap had risen at each vertex.</li>
 									</ul>
 
-									<h4>Water and Cube Mapping</h4>
+									<h4>Texturing and Cube Mapping</h4>
 									<ul>
-									<li>The water was also created using an index buffer, with
-										a rolling sine wave to create an illusion of waves.</li>
-									<li>In addition to a texture and bump map,
-										cube mapping was also used to give reflections of the distant mountains.
-										This is a similar technique to how the skybox was created, however,
-										different methods were used to calculate the direction vector used to sample the cube map.
+									<li>Bump Maps were used to provide extra detail to the terrain.
+									<li>The terrain texuture was linearly interpolated between two textures/bump maps,
+										based on the fragment height.</li>
+									<li>Triplanar Texturing was used to prevent textures from stretching
+										in steep areas of the terrain.</li>
+									<li>Cube mapping was used for the skybox and the the reflections in the water.</li>
 									</ul>
 
-									<h4>Lighting and Shadows</h4>
+									<h4>Phong Lighting and Shadow Mapping</h4>
 									<ul>
-									<li>Lighting was achieved using the Phong Lighting Model, providing calculations for ambient,
-										diffuse and specular lighting.</li>
-									<li>The main light is a purely directional light, without an origin.
-										Each of the lanterns create a point light centred at their origin.
-										Lastly, the UFO produces a spotlight which will only light
-										terrain within a given angle.</li>
-									<li>Shadow mapping was then used to form the shadows
-										of the objects onto the terrain. This is done dynamically, allowing the shadows to
-										update when objects move.
+									<li>The Phong Lighting Model was used for the lighting.</li>
+									<li>A directional light without an origin was used for the main light,
+										point lights for the lanterns, and a spotlight for the UFO.</li>
+									<li>Dynamic Shadow mapping was then used to form the shadows
+										of the objects onto the terrain.
 									</ul>
 
 									<h4>Post Processing</h4>
 									<p>
-										Several post processing effects were then added.
-										This was done by renderering the scene to a texture bound to a framebuffer.
-										This could then sampled in post processing steps before being rendered
+										Several post processing effects were added.
+										This was done by renderering to a framebuffer,
+										sampling it during post processing steps and the rendering
 										to the screen using a quad.
 									</p>
 										Post processing effects included:
@@ -170,9 +162,9 @@
 											<li>A general gaussian blur using ping pong processing.</li>
 											<li>A modified version to create a depth of field effect by sampling the depth buffer.</li>
 											<li>2 versions of Sobel Edge Detection
-												(a traditional black and white version, and a coloured version).</li>
-											<li>A simple Gameboy filter by setting the pixel to one of 4 colours
-												based on the pixels ‘intensity’.</li>
+												(black/white, and coloured).</li>
+											<li>A Gameboy filter by setting the pixel to one of 4 colours
+												based on the pixel's intensity.</li>
 										</ul>
 									</p>
 									<p>
