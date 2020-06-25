@@ -27,7 +27,10 @@
 						<header>
 							<div class="inner">
 								<h2>Unoriginal Goose Game</h2>
-								<p>CSC8503-Advanced Game Technologies Courework</p>
+								<p>
+									CSC8503-Advanced Game Technologies (C++)
+									<a href="https://github.com/charsleyj/public-examples">Code Samples</a>
+								</p>
 							</div>
 						</header>
 
@@ -37,13 +40,11 @@
 
 									<h3 class="major">Introduction</h3>
 									<p>
-										This was the third piece of coursework for the final year of my degree.
-										The aim for the coursework was to use C++ to create a game in which the player
+										The third coursework for the final year of my degree.
+										The aim was to use C++ to create a game in which the player
 										controlled an angry goose, picking up apples and taking them back to an island,
 										avoiding enemies along the way.
-									</p>
-									<p>
-										For the coursework, we were given a very basic framework and had to add physics,
+										We were given a very basic framework and added physics,
 										collision detection/resolution, state machines, pathfinding and networking between
 										multiple instances of the game.
 									</p>
@@ -112,7 +113,7 @@
 
 									<h4>Physics</h4>
 									<ul>
-										<li>Simple Newtonian physics was used in the game,
+										<li>Simple Newtonian physics
 											allowing objects to be moved by applying forces on them.
 											This can result in both linear and angular motion, by applying
 											Semi-Implicit Euler Integration.</li>
@@ -120,16 +121,15 @@
 
 									<h4>Collision Detection</h4>
 									<ul>
-										<li>Objects in the game are represented by one of three collision volumes:
+										<li>Objects are represented by one of three collision volumes:
 											Sphere, AABB, or OBB. The physics system can detect collisions between
 											Sphere/Sphere, Sphere/AABB, AABB/AABB, or Sphere/OBB.</li>
-										<li>Each collision volume is given a Unity-style Collision Layer. These will
+										<li>The collision detection is accelerated using a Quad Tree,
+											splitting up the world and reducing the number of tested collision pairs.</li>
+										<li>Unity-style Collision Layers were added. These
 											only collide with volumes on other specified layers, allowing some objects
-											to not collide with each other. These are used by the goose and island in the game,
+											to not collide with each other. These are used by the goose and island,
 											only letting them pick up and score particular items.</li>
-										<li>The collision detection is accelerated using a broad phase
-											in the form of Quad Trees, allowing the world to be split up and reducing
-											the number of collision pairs being tested.</li>
 									</ul>
 
 									<h4>Collision Resolution</h4>
@@ -137,8 +137,8 @@
 										<li>Collisions are resolved using projection (adjusting the object positions
 											to return them to a valid state) followed by an impulse (adjusting their linear and angular
 											velocity to account for the collision).</li>
-										<li>Collision volumes can be marked are Trigger Volumes.
-											These will detect collisions, but will skip the resolution phase,
+										<li>Collision volumes can be marked as Trigger Volumes.
+											These detect collisions, but skip the resolution phase,
 											allowing objects to detect certain collisions without responding to them.
 											This is used in the game by the water to create a bobbing effect,
 											and by the goose home, which surrounds the island and will score items placed inside.</li>
@@ -146,16 +146,16 @@
 
 									<h4>Artifical Intelligence</h4>
 									<ul>
-										<li>Finite State machines are used by enemies in the game, which will chase
-											the goose if it walks close by with an item.</li>
+										<li>Finite State machines are used by enemies, which will chase
+											the goose if it walks nearby with an item.</li>
 										<li>A* pathfinding is then used when chasing the goose.</li>
 									</ul>
 
 									<h4>Networking</h4>
 									<ul>
-										<li>The game also has a shared high-score table, which is stored
+										<li>The game has a shared high-score table, which is stored
 											by a server machine. After a player’s game ends, their score
-											will be added to the table, and the table is then sent to the
+											is added to the table, and the table is sent to the
 											player’s game to display.</li>
 									</ul>
 
