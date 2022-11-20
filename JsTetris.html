@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>James Charsley</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">James Charsley</a></h1>
+					</header>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>JsTetris</h2>
+								<p>Ongoing Personal Project</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Introduction</h3>
+									<p>
+										An implementation of Tetris made using HTML5 canvas and JavaScript.
+										It currently features several common game modes, including a battle mode
+										against an AI opponent.
+										However, I intend to extend this project by improving the AI
+										and adding additional game modes,
+										with the ability to combine multiple game modes together in a single game.
+									</p>
+									<p>
+										I chose JavaScript as I wanted this to be a browser-based game,
+										however in the future I may port this to other languages/platforms.
+									</p>
+
+
+									<h3 class="major">Images</h3>
+
+									<!-- Images used to open the lightbox -->
+									<div class="GallaryThumbnails">
+										<img class="GThumbnail" src="images/JsTetris-2_1.png" width=100% onclick="openModal();currentSlide(1)"/>
+										<img class="GThumbnail" src="images/JsTetris-2_2.gif" width=100% onclick="openModal();currentSlide(2)"/>
+										<img class="GThumbnail" src="images/JsTetris-1_1.gif" width=100% onclick="openModal();currentSlide(3)"/>
+										<img class="GThumbnail" src="images/JsTetris-1_2.gif" width=100% onclick="openModal();currentSlide(4)"/>
+										<img class="GThumbnail" src="images/JsTetris-1_3.gif" width=100% onclick="openModal();currentSlide(5)"/>
+										<img class="GThumbnail" src="images/JsTetris-1_4.gif" width=100% onclick="openModal();currentSlide(6)"/>
+									</div>
+
+									<!-- The Modal/Lightbox -->
+									<div id="myModal" class="modal">
+									  <div class="modal-content">
+										<span class="close cursor" onclick="closeModal()">&times;</span>
+
+										<div class="mySlides">
+										  <div class="numbertext">1 / 6</div>
+										  <img src="images/JsTetris-2_1.png" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">2 / 6</div>
+										  <img src="images/JsTetris-2_2.gif" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">3 / 6</div>
+										  <img src="images/JsTetris-1_1.gif" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">4 / 6</div>
+										  <img src="images/JsTetris-1_2.gif" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">5 / 6</div>
+										  <img src="images/JsTetris-1_3.gif" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">6 / 6</div>
+										  <img src="images/JsTetris-1_4.gif" style="width:100%">
+										</div>
+
+										<!-- Next/previous controls -->
+										<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+										<a class="next" onclick="plusSlides(1)">&#10095;</a>
+									  </div>
+								  </div>
+
+									<h3 class="major">Current Features</h3>
+									<ul>
+										<li>Common Tetris features such as the next queue, hold slot and hard drop.</li>
+										<li>Several standard Tetris modes, including gravity and battle modes.</li>
+										<li>Heuristic based AI opponent in Battle mode.</li>
+									</ul>
+
+
+									<h3 class="major">Plans in the Future</h3>
+									<ul>
+										<li>Improve the core Tetris mechanics. This includes adding the standard
+											tetris piece generation (7-bag), improving the rotation system and
+											add additional ways of scoring.</li>
+										<li>Improve the AI by adding additional metrics to the heuristic,
+											as well as allowing it to play other game modes.</li>
+										<li>Add additional game modes, such as hotline, and chill.
+											I also plan to add the ability to combine multiple game modes together in a single game.</li>
+										<li>Support additional input types, such as touch screen and gamepads.</li>
+										<li>Improve the visuals and sound.</li>
+									</ul>
+								</div>
+							</div>
+
+					</section>
+
+					<!-- Footer -->
+						<section id="footer">
+							<div class="inner">
+								<h2 class="major">Get in touch</h2>
+								<ul class="contact">
+									<li class="icon solid fa-phone">+447904816371</li>
+									<li class="icon solid fa-envelope"><a href="mailto:charsleyj@gmail.com">charsleyj@gmail.com</a></li>
+								</ul>
+								<ul class="contact">
+									<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/jamie-charsley-1870ab132">LinkedIn account</a></li>
+									<li class="icon brands fa-github"><a href="https://github.com/charsleyj">Github: charsleyj</a></li>
+								</ul>
+								<ul class="copyright">
+									<li>&copy; James Charsley</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+						</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/lightbox.js"></script>
+
+	</body>
+</html>
