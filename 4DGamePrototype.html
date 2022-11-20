@@ -26,7 +26,7 @@
 					<section id="wrapper">
 						<header>
 							<div class="inner">
-								<h2>4D Game Prototype</h2>
+								<h2>4D Game Prototypes</h2>
 								<p>Ongoing Personal Project</p>
 							</div>
 						</header>
@@ -37,16 +37,15 @@
 
 									<h3 class="major">Introduction</h3>
 									<p>
-										A series of 2D/3D tests in JavaScript for a 4D game I am working on based on the games Miegakure and Tetraspace.
+										A series of prototypes in C#/Unity and JavaScript for a 4D game I am working on based on the games Miegakure and Tetraspace.
 										The plan for the game is for the player to solve puzzles within a world with 4 spatial dimensions.
 										The player can move as normal in a 3d plane but has the ability to rotate this plane
 										90 degrees around them, allowing them to access different parts of the world.
 									</p>
 									<p>
-										I chose JavaScript as I needed an object oriented language that I had some experience with
-										and could easily draw lines to the screen with.
-										However, I aim to move over to either C++ (either using middleware,
-										or as part of the Unreal Engine) or C# (as part of Unity) when moving to a 3D/4D space.
+										I originally chose JavaScript for the first few 2D/3D prototypes as I had some experience with it
+										and could easily draw lines to the screen, however, I have moved to Unity for the 3D/4D prototypes
+										as I wanted to use a modern video game engine.
 									</p>
 
 
@@ -57,9 +56,9 @@
 										<img class="GThumbnail" src="images/4dProto-2_1.png" width=100% onclick="openModal();currentSlide(1)"/>
 										<img class="GThumbnail" src="images/4dProto-2_2.png" width=100% onclick="openModal();currentSlide(2)"/>
 										<img class="GThumbnail" src="images/4dProto-2_2.gif" width=100% onclick="openModal();currentSlide(3)"/>
-										<img class="GThumbnail" src="images/4dProto-2_3.png" width=100% onclick="openModal();currentSlide(4)"/>
-										<img class="GThumbnail" src="images/4dProto-2_3.gif" width=100% onclick="openModal();currentSlide(5)"/>
-										<img class="GThumbnail" src="images/4dProto-2_4.gif" width=100% onclick="openModal();currentSlide(6)"/>
+										<img class="GThumbnail" src="images/4dProto-2_3.gif" width=100% onclick="openModal();currentSlide(4)"/>
+										<img class="GThumbnail" src="images/4dProto-2_4.gif" width=100% onclick="openModal();currentSlide(5)"/>
+										<img class="GThumbnail" src="images/4dProto-3_1.gif" width=100% onclick="openModal();currentSlide(6)"/>
 									</div>
 
 									<!-- The Modal/Lightbox -->
@@ -84,17 +83,17 @@
 
 										<div class="mySlides">
 										  <div class="numbertext">4 / 6</div>
-										  <img src="images/4dProto-2_3.png" style="width:100%">
-										</div>
-
-										<div class="mySlides">
-										  <div class="numbertext">5 / 6</div>
 										  <img src="images/4dProto-2_3.gif" style="width:100%">
 										</div>
 
 										<div class="mySlides">
-										  <div class="numbertext">6 / 6</div>
+										  <div class="numbertext">5 / 6</div>
 										  <img src="images/4dProto-2_4.gif" style="width:100%">
+										</div>
+
+										<div class="mySlides">
+										  <div class="numbertext">6 / 6</div>
+										  <img src="images/4dProto-3_1.gif" style="width:100%">
 										</div>
 
 										<!-- Next/previous controls -->
@@ -130,19 +129,20 @@
 											and incorporate the mechanic within a game engine.
 										</p>
 
+										<p>
+											<strong>Version 4: Cross-Section of a 4D Mesh</strong><br/>
+											For this and future versions I moved to Unity.
+											This takes the cross-section functionality of previous
+											versions and applies it to 4D meshes, creating 3D graphics.
+										</p>
+
 									<h3 class="major">Plans in the Future</h3>
 									<ul>
 										<li> Improve Code Quality </li>
-										<li> Extend the collision detection within the prototype.
-											Currently the game only performs collision detection along the visible plane.
-											I Would want to have a greater degree of 3d collision detection,
-											allowing the player to move blocks which extend through multiple planes. </li>
-										<li> Create a 3d/4d version within C++/Unity/Unreal of the core mechanic.
-											Most likely to use an existing engine.
-											Although I would be more limited within the engine,
-											I would have access to all the tools and existing code that engine would provide.
-											It may also help with porting the game to other platforms/engines
-											if I am able to have the game working within a 3D game engine.</li>
+										<li> Add collision detection and physics to the Unity prototype to allow gameplay.
+											 Similar to version 3.</li>
+										<li> Increase the speed that the 4D mesh is converted or
+											rendered to 3D.</li>
 									</ul>
 								</div>
 							</div>
